@@ -31,19 +31,19 @@ def verify_by_public_key(input_text, signature, public_key):
 # RSA 1024 bits private key
 pem_private_key = b"""
 -----BEGIN RSA PRIVATE KEY-----
-MIICWwIBAAKBgQCQq5094oTTQbD601MQNWkgQjHXbfuIWSqYxpWZgzpIxl1gUNi4
-n6LMKZUW7JT1Wpp/9s4WaAhmdGAmHjCo8cRNvWo/B2XkwsXveH2XYnhbWDOv7zGy
-ycjVl+aN01JN3XszbPrw5edhygXdJz2MiGeRBahm9kd04XjdiTS+mnDHbwIDAQAB
-AoGASrEP4d+NjDSiVx28COZKfGkwqnUSJHdE0tPUcQmbke84Tn3vJoLk3lupqchD
-r9kzY1XdWRwlGiCDc6qqnM8V9fW5v4GmKP6mGGOHwxocw8KIOnh53nptu6q/OoZm
-5PK4n5qhISiA53wdYjkqe5jfrQBhqNLWb0YQqqtOdalD9IECQQDQTsgWjPHhQB30
-ADl+3LVVOxie9EgJRHfAtSibedabNaMkThj8I1QJma2AdzCGfPk/tpL9lB25ymNI
-8CXwdlu/AkEAscr0PJ1uMvgSJfmreIlLaFqyuhl4wwb/r9QNgHewDS1tCEyEEg+2
-fnD6+TUmFSOn5z6oglhaHfemQSrVrXJAUQJAAwuDxUCeMIq9ZVmzfXVAeVR50akE
-fI4xqfF7/HnVd0NbdSZnGxhxHArRDHWxkeW1xwamM2q83IBm3yQTieZRBQJAYGjf
-vCbaZQUkQjd7BifdHj9gf43kcE1RRTVGBQ3iB6NEZqWnUGv41+PIFG7/saLeH4VY
-tyXV6D4sh1YE/MLhoQJAZMNe4nEk+0+ajh1eUcw1F7POqY4tx4XYInNlLbe8f64l
-ZKZ9NYJFINlZpo3wrUCoSoove37f0fPLZ1mkoU3yOw==
+MIICWAIBAAKBgLkG1MbGaKzsCnfEz/v5Pv0mSffavUujhNKjmAAUdlBuE6v+uxMH
+ezdep9kH1FZRZHtYRjN1M6oeqckKVMhK82DMkoRxjCjwyknnM6VKO8uMbI3jbZwE
+jEv7yyNjxNIF7jVq5ifJujc13uainCQw2Y2UyJD3pmSgZp7xkt9vM9lVAgMBAAEC
+gYAdGhn1edeU+ztaQzaDZ1yk7JTNyzXi48FMcDbELHO/itDFSLeb8p1KxDSaSkT3
+nq2zSNsh1NlfdJs358wWBNPqrSBOEQGrcwUqob59mLQysxddE8HKN0kN7ZfLiebp
+y1xHxTqV1VEBmTlon9sMyYa5wbjJ8teSBQnvXP5JCnw2sQJAytZc/rIxKSazx2is
+os89qJFkzIEK4QhopCvSiDWarsYRi79KIxizrL0PCK0qAu6OXFsy5F2Ei+YXw++I
+Hhgx2wJA6YVwCKnGybW5hDKy7+XdFPpy0mhLxcGMWo9LQKCCSTKXqj6IOH3HOvnc
+iXN7NUf/TwN6mFzrsBHzyKrXJhAAjwJAnNIhMfW41nUKt9hw6KtLo4FNqmL2c0da
+B9utuQugnRGbzSzG992IRLwi3HVtLrkbrcIA1diLutHZe+48ke/o0wJANVdPogr1
+53llKPdTvEyrVXFn7Pv54vA1GTKGI/sGB6ZQ0oh6IT1J1wTgBV2llSQfA3Nt+4Ou
+KofPQdUUVBNvrQJAeFeVPpvWJTiMWCN2NMmJXqqdva8J1XIT047x5fdg72LcPOU+
+xCGlz9vV3+AAQ31C2phoyd/QhvpL85p39n6Ibg==
 -----END RSA PRIVATE KEY-----
 """
 
@@ -73,7 +73,7 @@ public_key = serialization.load_pem_public_key(
 # Main code
 userId = "142821649"
 idempotencyKey = "b5b08324-62c1-48c4-b0a2-72976c05894b"
-input_text = f"{userId}-{idempotencyKey}"
+input_text = f"{userId}{idempotencyKey}"
 
 signature = sign_by_private_key(input_text, private_key)
 print(f"idempotencyKeySignature: {signature}")
