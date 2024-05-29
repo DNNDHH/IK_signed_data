@@ -6,7 +6,7 @@ from cryptography.hazmat.primitives.asymmetric import rsa
 import base64
 
 def sign_by_private_key(input_text, private_key):
-    input_bytes = input_text.encode('utf-16-le')
+    input_bytes = input_text.encode('utf-8')
     signature = private_key.sign(
         input_bytes,
         padding.PKCS1v15(),
@@ -15,7 +15,7 @@ def sign_by_private_key(input_text, private_key):
     return base64.b64encode(signature).decode()
 
 def verify_by_public_key(input_text, signature, public_key):
-    input_bytes = input_text.encode('utf-16-le')
+    input_bytes = input_text.encode('utf-8')
     signature_bytes = base64.b64decode(signature)
     try:
         public_key.verify(
